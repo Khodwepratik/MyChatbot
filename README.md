@@ -2,11 +2,7 @@
 Questions and answering chatbot with pdf in python 
 
 ## Install the dependencies 
-  pip install trasnformers
-  pip install torch
-  pip install spacy
-  pip install fitz
-  pip install flask
+  pip install trasnformers,pipeline, torch, spacy,fitz, install flask
 
 Dependencies
 1. Flask: A micro web framework for Python.
