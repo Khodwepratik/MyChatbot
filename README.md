@@ -1,5 +1,5 @@
 # MyChatbot
-Questions and answering chatbot with pdf in python 
+Questions and answering chatbot with pdf in python using (transformers and hugging faces models) 
 
 ## Dependencies
 1. Flask: A micro web framework for Python.
