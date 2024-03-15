@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chatbot</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f0f0f0;
+      }
+
+      header {
+        background-color: #00ffff;
+        color: #000;
+        padding: 10px;
+        text-align: center;
+        font-size: 18px;
+      }
+
+      main {
+        max-width: 600px;
+        margin: 20px auto;
+        background-color: #fff;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+        overflow: hidden;
+        padding: 15px;
+        overflow-y: auto;
+        max-height: 300px;
+      }
+
+      .user-message,
+      .bot-message {
+        padding: 10px;
+        margin-bottom: 10px;
+        border-radius: 5px;
+        animation: fadeIn 0.5s ease-in-out;
+      }
+
+      .user-message {
+        background-color: #2196f3;
+        color: #fff;
+      }
+
+      .bot-message {
+        background-color: #4caf50;
+        color: #ff2f;
+      }
+
+      #chat-input {
+        display: flex;
+        padding: 10px;
+        background-color: #eee;
+      }
+
+      #user-input {
+        flex: 1;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+
+      #send-button {
+        background-color: #4caf50;
+        color: #fff;
+        padding: 8px 15px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease-in-out;
+      }
+
+      #send-button:hover {
+        background-color: #45a049;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+    </style>
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  </head>
+  <body>
+    <header>
+      <h1>Chatbot</h1>
+      <h4>Chat with the pdf</h4>
+    </header>
+    <main id="chat-body"></main>
+    <div id="chat-input">
+      <input type="text" id="user-input" placeholder="Type your message..." />
+      <button id="send-button">Send</button>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        var sendButton = document.getElementById("send-button");
+        var userInput = document.getElementById("user-input");
+        var chatBody = document.getElementById("chat-body");
+
+        sendButton.addEventListener("click", function () {
+          var user_input = userInput.value;
+          chatBody.innerHTML +=
+            '<div class="user-message">' + user_input + "</div>";
+
+          $.post("/get_response", { user_input: user_input }, function (data) {
+            var bot_response = data.response;
+            chatBody.innerHTML +=
+              '<div class="bot-message">' + bot_response + "</div>";
+          });
+
+          userInput.value = "";
+        });
+      });
+    </script>
+  </body>
+</html>
