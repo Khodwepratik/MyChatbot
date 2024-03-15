@@ -1,0 +1,16 @@
+{
+  "questions": [
+    {
+      "question": "Hello",
+      "answer": "Greetings! Welcome to KCS- Sales and Services.... How May I Help You?"
+    },
+    {
+      "question": "Bye",
+      "answer": "Have a nice day..!"
+    },
+    {
+      "question": "Thank You",
+      "answer": "Happy to Help you."
+    }
+  ]
+}
